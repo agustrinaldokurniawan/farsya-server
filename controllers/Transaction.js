@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 const TransactionModel = require("../models/Transaction");
 
 const { createHash } = require("crypto");
