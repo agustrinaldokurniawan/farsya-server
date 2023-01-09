@@ -14,6 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const database = new Database();
 database.connectMongodb();
 
+app.get("/", (req, res) => {
+  res.send("Hey this is my API running 🥳");
+});
+
 app.use(require("./routes"));
 
 app.listen(3000, (err) => {
