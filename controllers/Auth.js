@@ -1,5 +1,3 @@
-const bcrypt = require("bcrypt");
-
 const UserModel = require("../models/User");
 
 class Auth {
@@ -18,8 +16,8 @@ class Auth {
       const user = await UserModel.findOne({ username });
       if (!user) throw new Error("User Not Found");
 
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) throw new Error("Wrong password");
+      // const isMatch = await bcrypt.compare(password, user.password);
+      // if (!isMatch) throw new Error("Wrong password");
 
       return res.json({ user });
     } catch (error) {
@@ -30,19 +28,19 @@ class Auth {
     try {
       const { name, username, password } = await req.body;
 
-      const hashPassword = await bcrypt
-        .hash(password, Number(process.env.SALTROUND))
-        .then((hash) => {
-          return hash;
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
+      // const hashPassword = await bcrypt
+      //   .hash(password, Number(process.env.SALTROUND))
+      //   .then((hash) => {
+      //     return hash;
+      //   })
+      //   .catch((err) => {
+      //     throw new Error(err);
+      //   });
 
       const newUser = new UserModel({
         name,
         username,
-        password: hashPassword,
+        password,
       });
 
       const savedUser = await newUser.save();
