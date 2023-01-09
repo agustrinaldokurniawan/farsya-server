@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start:dev": "nodemon index.js",
+    "prep": "npm install express axios bcrypt body-parser cors dotenv monggoose node_fetch ",
+    "clean-cache": "rimraf .next",
+    "rimraf": "./node_modules/rimraf/bin.js",
+    "clean": "npm run prep && rimraf node_modules"
   },
   "keywords": [],
   "author": "",
